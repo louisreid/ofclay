@@ -88,8 +88,9 @@ body {
 
 .brand {
   flex: 0 0 auto;
-  width: min(40rem, 70vw);
-  margin: 0 auto clamp(1.5rem, 4vh, 2.5rem);
+  width: min(38rem, 72vw);
+  margin: 0 auto clamp(1.75rem, 4.5vh, 2.75rem);
+  text-align: right;
 }
 
 .brand__name {
@@ -103,12 +104,17 @@ body {
 .portfolio {
   flex: 0 1 auto;
   align-self: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(1rem, 2vw, 1.35rem);
-  width: min(40rem, 70vw);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.85rem, 1.8vw, 1.15rem);
+  width: min(38rem, 72vw);
   margin: 0 auto;
-  align-items: start;
+}
+
+.portfolio__top {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.85rem, 1.8vw, 1.15rem);
 }
 
 .study {
@@ -117,7 +123,6 @@ body {
   margin: 0;
   padding: 0;
   border: 0;
-  width: 100%;
   background: transparent;
   cursor: zoom-in;
   appearance: none;
@@ -139,6 +144,20 @@ body {
 
 .study:hover img {
   filter: saturate(1) contrast(1);
+}
+
+.study--portrait {
+  flex: 0 0 28%;
+  width: 28%;
+}
+
+.study--wide {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.study--base {
+  width: 100%;
 }
 
 .contact {
@@ -280,7 +299,12 @@ body.is-lightbox {
 
   .brand,
   .portfolio {
-    width: min(100%, 86vw);
+    width: min(100%, 88vw);
+  }
+
+  .study--portrait {
+    flex-basis: 34%;
+    width: 34%;
   }
 
   .atmosphere__plane {
