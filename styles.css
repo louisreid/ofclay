@@ -103,23 +103,27 @@ body {
 .portfolio {
   flex: 0 1 auto;
   display: grid;
-  grid-template-columns: 0.9fr 1.2fr 1fr;
-  grid-template-rows: 1.2fr 0.9fr;
-  gap: clamp(0.75rem, 1.6vw, 1.15rem);
-  align-content: center;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  gap: clamp(0.85rem, 1.8vw, 1.25rem);
+  align-items: start;
   align-self: center;
-  width: min(52rem, 78vw);
-  height: min(68vh, 34rem);
+  width: min(46rem, 72vw);
   margin: 0 auto;
-  min-height: 0;
+}
+
+.portfolio__stack {
+  display: grid;
+  gap: clamp(0.85rem, 1.8vw, 1.25rem);
 }
 
 .study {
   position: relative;
+  display: block;
   margin: 0;
   padding: 0;
   border: 0;
-  background: var(--shade);
+  width: 100%;
+  background: transparent;
   cursor: zoom-in;
   overflow: hidden;
   appearance: none;
@@ -134,53 +138,13 @@ body {
 .study img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.7s ease, filter 0.7s ease;
-  filter: saturate(0.92) contrast(0.98);
+  height: auto;
+  transition: filter 0.5s ease;
+  filter: saturate(0.94) contrast(0.99);
 }
 
 .study:hover img {
-  transform: scale(1.03);
   filter: saturate(1) contrast(1);
-}
-
-.study--a {
-  grid-column: 1;
-  grid-row: 1 / span 2;
-}
-
-.study--a img {
-  object-position: 55% 40%;
-}
-
-.study--b {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.study--b img {
-  object-position: 40% 55%;
-}
-
-.study--c {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.study--c img {
-  object-position: center 30%;
-  filter: saturate(0.85) contrast(1.02);
-}
-
-.study--d {
-  grid-column: 2 / span 2;
-  grid-row: 2;
-}
-
-.study--d img {
-  object-position: center;
 }
 
 .contact {
@@ -322,37 +286,11 @@ body.is-lightbox {
 
   .brand,
   .portfolio {
-    width: min(100%, 88vw);
+    width: min(100%, 86vw);
   }
 
   .portfolio {
-    height: auto;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-  }
-
-  .study--a {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    min-height: 48vh;
-  }
-
-  .study--b {
-    grid-column: 2;
-    grid-row: 1;
-    min-height: 22vh;
-  }
-
-  .study--c {
-    grid-column: 2;
-    grid-row: 2;
-    min-height: 22vh;
-  }
-
-  .study--d {
-    grid-column: 1 / span 2;
-    grid-row: 3;
-    min-height: 20vh;
+    grid-template-columns: 1fr;
   }
 
   .atmosphere__plane {
