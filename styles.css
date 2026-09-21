@@ -64,12 +64,12 @@ body {
 .portfolio {
   flex: 1 1 auto;
   display: grid;
-  grid-template-columns: 1.15fr 0.95fr 1fr;
-  gap: clamp(0.65rem, 1.6vw, 1.15rem);
-  align-items: stretch;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: clamp(0.55rem, 1.4vw, 1rem);
+  align-items: end;
   min-height: 0;
   width: 100%;
-  max-width: 68rem;
+  max-width: 56rem;
   margin: 0 auto;
 }
 
@@ -95,8 +95,8 @@ body {
 /* Soft window light — open plane, pale falloff */
 .study--light .study__image {
   background:
-    radial-gradient(ellipse 70% 55% at 28% 22%, rgba(255, 248, 230, 0.55) 0%, transparent 58%),
-    linear-gradient(165deg, #f0e2bc 0%, #d9c493 42%, #b89a6e 100%);
+    radial-gradient(ellipse 65% 50% at 22% 18%, rgba(255, 250, 235, 0.7) 0%, transparent 55%),
+    linear-gradient(168deg, #efe3c0 0%, #c9ad7a 48%, #9a7550 100%);
 }
 
 .study--light .study__image::after {
@@ -104,8 +104,8 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, transparent 62%, rgba(61, 42, 28, 0.08) 100%),
-    radial-gradient(circle at 70% 80%, rgba(92, 67, 50, 0.12), transparent 45%);
+    linear-gradient(95deg, transparent 55%, rgba(61, 42, 28, 0.12) 100%),
+    radial-gradient(circle at 72% 78%, rgba(61, 42, 28, 0.16), transparent 48%);
   pointer-events: none;
 }
 
@@ -114,11 +114,11 @@ body {
   background:
     linear-gradient(
       180deg,
-      #ebe0c0 0%,
-      #e0d0a8 46%,
-      #c4a87a 47%,
-      #a8885f 72%,
-      #8f6f4a 100%
+      #e8d9b0 0%,
+      #d9c49a 44%,
+      #b89668 46%,
+      #8f6d48 78%,
+      #6e5238 100%
     );
 }
 
@@ -127,26 +127,26 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 90% 40% at 50% 38%, rgba(255, 250, 235, 0.35), transparent 70%),
-    linear-gradient(180deg, transparent 40%, rgba(61, 42, 28, 0.1) 100%);
+    radial-gradient(ellipse 95% 42% at 50% 36%, rgba(255, 250, 235, 0.28), transparent 68%),
+    linear-gradient(180deg, transparent 35%, rgba(61, 42, 28, 0.14) 100%);
   pointer-events: none;
 }
 
 /* Clay grain / close texture */
 .study--grain .study__image {
   background:
-    radial-gradient(ellipse 50% 40% at 60% 35%, #c9a87a 0%, transparent 55%),
-    radial-gradient(ellipse 40% 35% at 30% 70%, #9a7550 0%, transparent 50%),
-    linear-gradient(145deg, #d4b88a 0%, #b89268 45%, #8c6844 100%);
+    radial-gradient(ellipse 48% 38% at 62% 32%, #d0b078 0%, transparent 55%),
+    radial-gradient(ellipse 42% 36% at 28% 72%, #8a6540 0%, transparent 52%),
+    linear-gradient(148deg, #c9a878 0%, #a67f55 42%, #6f5136 100%);
 }
 
 .study--grain .study__image::after {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.45;
+  opacity: 0.5;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
+  background-size: 160px 160px;
   mix-blend-mode: multiply;
   pointer-events: none;
 }
@@ -159,24 +159,17 @@ body {
   position: relative;
 }
 
-/* Slight staggered crop so the triptych feels composed, not a strip */
-.study--light {
-  align-self: stretch;
+/* Staggered heights — portfolio composition, not a flat strip */
+.study--light .study__image {
+  min-height: clamp(18rem, 68vh, 36rem);
 }
 
-.study--horizon {
-  align-self: center;
-  max-height: 88%;
+.study--horizon .study__image {
+  min-height: clamp(14rem, 52vh, 27rem);
 }
 
-.study--grain {
-  align-self: end;
-  max-height: 92%;
-}
-
-.study--horizon .study__image,
 .study--grain .study__image {
-  min-height: clamp(14rem, 52vh, 28rem);
+  min-height: clamp(16rem, 60vh, 32rem);
 }
 
 /* —— Below fold: contact —— */
@@ -287,16 +280,13 @@ button:hover {
     gap: 0.55rem;
   }
 
-  .study--light,
-  .study--horizon,
-  .study--grain {
-    align-self: stretch;
-    max-height: none;
+  .portfolio {
+    align-items: stretch;
   }
 
-  .study__image,
+  .study--light .study__image,
   .study--horizon .study__image,
   .study--grain .study__image {
-    min-height: 28vh;
+    min-height: 26vh;
   }
 }
