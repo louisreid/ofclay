@@ -6,7 +6,7 @@
     <title>Of Clay</title>
     <meta
       name="description"
-      content="Of Clay — photography and creative studio. Portfolio forming."
+      content="Of Clay — photography and creative studio."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,22 +17,98 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
+    <div class="atmosphere" aria-hidden="true">
+      <span class="atmosphere__wash"></span>
+      <span class="atmosphere__plane"></span>
+      <span class="atmosphere__grain"></span>
+    </div>
+
     <div class="fold">
       <header class="brand">
         <p class="brand__name">Of Clay</p>
         <p class="brand__note">Photography</p>
       </header>
 
-      <main class="portfolio" aria-label="Selected studies">
-        <figure class="study study--light">
-          <div class="study__image" role="img" aria-label="Abstract study of soft window light"></div>
-        </figure>
-        <figure class="study study--horizon">
-          <div class="study__image" role="img" aria-label="Abstract study of a quiet horizon"></div>
-        </figure>
-        <figure class="study study--grain">
-          <div class="study__image" role="img" aria-label="Abstract study of clay texture"></div>
-        </figure>
+      <main class="portfolio" aria-label="Selected photographs">
+        <button
+          type="button"
+          class="study study--a"
+          data-full="/images/05-img-lg.jpg"
+          aria-label="Open photograph"
+        >
+          <img
+            src="/images/05-img-md.jpg"
+            alt=""
+            width="600"
+            height="900"
+            loading="eager"
+            decoding="async"
+          />
+        </button>
+
+        <button
+          type="button"
+          class="study study--b"
+          data-full="/images/01-on-top-lg.jpg"
+          aria-label="Open photograph"
+        >
+          <img
+            src="/images/01-on-top-md.jpg"
+            alt=""
+            width="900"
+            height="600"
+            loading="eager"
+            decoding="async"
+          />
+        </button>
+
+        <button
+          type="button"
+          class="study study--c"
+          data-full="/images/04-lars-josefin-lg.jpg"
+          aria-label="Open photograph"
+        >
+          <img
+            src="/images/04-lars-josefin-md.jpg"
+            alt=""
+            width="900"
+            height="600"
+            loading="eager"
+            decoding="async"
+          />
+        </button>
+
+        <button
+          type="button"
+          class="study study--d"
+          data-full="/images/02-dsc-lg.jpg"
+          aria-label="Open photograph"
+        >
+          <img
+            src="/images/02-dsc-md.jpg"
+            alt=""
+            width="900"
+            height="600"
+            loading="lazy"
+            decoding="async"
+          />
+        </button>
+
+        <button
+          type="button"
+          class="study study--e"
+          data-full="/images/03-untitled-lg.jpg"
+          aria-label="Open photograph"
+        >
+          <img
+            src="/images/03-untitled-md.jpg"
+            alt=""
+            width="900"
+            height="600"
+            loading="lazy"
+            decoding="async"
+          />
+        </button>
       </main>
     </div>
 
@@ -64,5 +140,12 @@
         <button type="submit">Send</button>
       </form>
     </footer>
+
+    <div class="lightbox" hidden>
+      <button type="button" class="lightbox__backdrop" aria-label="Close"></button>
+      <img class="lightbox__image" alt="" />
+    </div>
+
+    <script src="/lightbox.js" defer></script>
   </body>
 </html>

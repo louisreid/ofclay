@@ -1,9 +1,11 @@
 :root {
-  --bg: #e4d4a6;
-  --bg-deep: #d8c48f;
-  --ink: #3d2a1c;
-  --ink-mute: #5c4332;
-  --line: rgba(61, 42, 28, 0.16);
+  /* Sampled from the interior light study */
+  --bg: #e6dcc8;
+  --bg-warm: #efe6d4;
+  --ink: #3a2e24;
+  --ink-mute: #5a4a3c;
+  --line: rgba(58, 46, 36, 0.16);
+  --shade: rgba(58, 46, 36, 0.08);
 }
 
 *,
@@ -18,6 +20,7 @@ html {
 }
 
 body {
+  position: relative;
   margin: 0;
   min-height: 100%;
   background: var(--bg);
@@ -28,21 +31,64 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* —— First viewport: brand + triptych —— */
+/* Subtle abstractions — light plane + grain, echoing the photographs */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.atmosphere__wash {
+  position: absolute;
+  inset: -10%;
+  background:
+    radial-gradient(ellipse 55% 45% at 72% 18%, rgba(255, 248, 235, 0.55) 0%, transparent 62%),
+    radial-gradient(ellipse 40% 35% at 12% 78%, rgba(176, 148, 110, 0.18) 0%, transparent 70%);
+}
+
+.atmosphere__plane {
+  position: absolute;
+  top: 8%;
+  right: 14%;
+  width: min(28vw, 18rem);
+  height: min(34vh, 16rem);
+  background: linear-gradient(
+    148deg,
+    rgba(255, 250, 240, 0.35) 0%,
+    rgba(255, 250, 240, 0.08) 55%,
+    transparent 100%
+  );
+  clip-path: polygon(18% 0, 100% 8%, 88% 100%, 0 78%);
+  opacity: 0.55;
+}
+
+.atmosphere__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  mix-blend-mode: multiply;
+}
+
+.fold,
+.contact {
+  position: relative;
+  z-index: 1;
+}
 
 .fold {
-  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
-  padding: 1.5rem clamp(1.25rem, 3vw, 2rem) 1.75rem;
+  padding: 1.5rem clamp(1.25rem, 3vw, 2rem) 2rem;
 }
 
 .brand {
-  position: relative;
-  z-index: 2;
   flex: 0 0 auto;
-  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+  margin-bottom: clamp(1rem, 2.5vh, 1.75rem);
 }
 
 .brand__name {
@@ -64,102 +110,98 @@ body {
 .portfolio {
   flex: 1 1 auto;
   display: grid;
-  grid-template-columns: 1.05fr 0.9fr 1fr;
-  gap: clamp(0.55rem, 1.4vw, 1rem);
-  align-items: end;
+  grid-template-columns: 0.85fr 1.15fr 0.95fr;
+  grid-template-rows: 1.15fr 0.85fr;
+  gap: clamp(0.55rem, 1.3vw, 0.95rem);
+  align-content: stretch;
   min-height: 0;
   width: 100%;
-  margin: 0;
 }
 
 .study {
   position: relative;
   margin: 0;
-  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: var(--shade);
+  cursor: zoom-in;
   overflow: hidden;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
-.study__image {
-  position: relative;
+.study:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.study img {
+  display: block;
   width: 100%;
   height: 100%;
-  /* Swap for real photos later:
-     background-image: url("/images/01.jpg");
-     background-size: cover;
-     background-position: center;
-  */
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s ease, filter 0.7s ease;
+  filter: saturate(0.92) contrast(0.98);
 }
 
-/* Soft window light — open plane, pale falloff */
-.study--light .study__image {
-  min-height: clamp(18rem, 68vh, 36rem);
-  background:
-    radial-gradient(ellipse 65% 50% at 22% 18%, rgba(255, 250, 235, 0.65) 0%, transparent 55%),
-    linear-gradient(168deg, #e6d4a8 0%, #b89262 48%, #7a5a3a 100%);
+.study:hover img {
+  transform: scale(1.03);
+  filter: saturate(1) contrast(1);
 }
 
-.study--light .study__image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(95deg, transparent 55%, rgba(61, 42, 28, 0.14) 100%),
-    radial-gradient(circle at 72% 78%, rgba(61, 42, 28, 0.18), transparent 48%);
-  pointer-events: none;
+.study--a {
+  grid-column: 1;
+  grid-row: 1 / span 2;
 }
 
-/* Quiet horizon — landscape suggestion */
-.study--horizon .study__image {
-  min-height: clamp(14rem, 52vh, 27rem);
-  background:
-    linear-gradient(
-      180deg,
-      #e0d0a4 0%,
-      #d0bc90 44%,
-      #a88858 46%,
-      #7a5838 78%,
-      #5a4030 100%
-    );
+.study--a img {
+  object-position: 55% 40%;
 }
 
-.study--horizon .study__image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 95% 42% at 50% 36%, rgba(255, 250, 235, 0.28), transparent 68%),
-    linear-gradient(180deg, transparent 35%, rgba(61, 42, 28, 0.14) 100%);
-  pointer-events: none;
+.study--b {
+  grid-column: 2;
+  grid-row: 1;
 }
 
-/* Clay grain / close texture */
-.study--grain .study__image {
-  min-height: clamp(16rem, 60vh, 32rem);
-  background:
-    radial-gradient(ellipse 48% 38% at 62% 32%, #c8a870 0%, transparent 55%),
-    radial-gradient(ellipse 42% 36% at 28% 72%, #7a5535 0%, transparent 52%),
-    linear-gradient(148deg, #b89260 0%, #8f6840 42%, #5c4028 100%);
+.study--b img {
+  object-position: 40% 55%;
 }
 
-.study--grain .study__image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.5;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
-  background-size: 160px 160px;
-  mix-blend-mode: multiply;
-  pointer-events: none;
+.study--c {
+  grid-column: 3;
+  grid-row: 1;
 }
 
-/* —— Below fold: contact —— */
+.study--c img {
+  object-position: center 30%;
+  filter: saturate(0.85) contrast(1.02);
+}
+
+.study--d {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.study--d img {
+  object-position: center;
+}
+
+.study--e {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.study--e img {
+  object-position: 50% 35%;
+}
 
 .contact {
   display: grid;
   gap: 1.1rem;
   width: min(22rem, 88vw);
   margin: 0 auto;
-  padding: 4.5rem 1.25rem 3rem;
+  padding: 4rem 1.25rem 3rem;
   border-top: 1px solid var(--line);
 }
 
@@ -231,7 +273,7 @@ body {
   overflow: hidden;
 }
 
-button {
+.enquiry > button {
   justify-self: start;
   margin-top: 0.35rem;
   padding: 0.35rem 0;
@@ -245,28 +287,88 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.enquiry > button:hover {
   opacity: 0.7;
 }
 
-@media (max-width: 720px) {
+/* Lightbox — image only */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(42, 32, 24, 0.82);
+  cursor: zoom-out;
+}
+
+.lightbox__image {
+  position: relative;
+  z-index: 1;
+  max-width: min(96vw, 1400px);
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.35);
+}
+
+body.is-lightbox {
+  overflow: hidden;
+}
+
+@media (max-width: 800px) {
   .fold {
     padding: 1.25rem 1rem 1.5rem;
   }
 
   .portfolio {
-    gap: 0.4rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
   }
 
-  .study--light .study__image {
-    min-height: clamp(12rem, 58vh, 22rem);
+  .study--a {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    min-height: 52vh;
   }
 
-  .study--horizon .study__image {
-    min-height: clamp(9rem, 42vh, 16rem);
+  .study--b {
+    grid-column: 2;
+    grid-row: 1;
+    min-height: 24vh;
   }
 
-  .study--grain .study__image {
-    min-height: clamp(11rem, 52vh, 19rem);
+  .study--c {
+    grid-column: 2;
+    grid-row: 2;
+    min-height: 24vh;
+  }
+
+  .study--d {
+    grid-column: 1;
+    grid-row: 3;
+    min-height: 22vh;
+  }
+
+  .study--e {
+    grid-column: 2;
+    grid-row: 3;
+    min-height: 22vh;
+  }
+
+  .atmosphere__plane {
+    display: none;
   }
 }

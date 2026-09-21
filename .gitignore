@@ -4,3 +4,9 @@
 .env
 .env.*
 !.env.example
+.incoming/
+images/01-on-top.jpg
+images/02-dsc.jpg
+images/03-untitled.jpg
+images/04-lars-josefin.jpg
+images/05-img.jpg
