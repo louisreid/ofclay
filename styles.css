@@ -88,8 +88,8 @@ body {
 
 .brand {
   flex: 0 0 auto;
-  width: min(52rem, 78vw);
-  margin: 0 auto clamp(1.5rem, 4vh, 2.5rem);
+  width: min(50rem, 78vw);
+  margin: 0 auto clamp(1.25rem, 3.5vh, 2.25rem);
 }
 
 .brand__name {
@@ -100,32 +100,23 @@ body {
   line-height: 1.1;
 }
 
-.portfolio {
+/* Asymmetric cluster — each photo keeps its native ratio */
+.cluster {
+  position: relative;
   flex: 0 1 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
-  gap: clamp(0.85rem, 1.8vw, 1.25rem);
-  align-items: start;
   align-self: center;
-  width: min(46rem, 72vw);
+  width: min(50rem, 78vw);
+  aspect-ratio: 11 / 8;
   margin: 0 auto;
 }
 
-.portfolio__stack {
-  display: grid;
-  gap: clamp(0.85rem, 1.8vw, 1.25rem);
-}
-
 .study {
-  position: relative;
-  display: block;
+  position: absolute;
   margin: 0;
   padding: 0;
   border: 0;
-  width: 100%;
   background: transparent;
   cursor: zoom-in;
-  overflow: hidden;
   appearance: none;
   -webkit-appearance: none;
 }
@@ -139,12 +130,44 @@ body {
   display: block;
   width: 100%;
   height: auto;
-  transition: filter 0.5s ease;
+  transition: filter 0.5s ease, opacity 0.5s ease;
   filter: saturate(0.94) contrast(0.99);
 }
 
 .study:hover img {
   filter: saturate(1) contrast(1);
+}
+
+.study:hover {
+  z-index: 2;
+}
+
+/* Portrait — interior light */
+.study--1 {
+  left: 2%;
+  top: 8%;
+  width: 27%;
+}
+
+/* Landscape — hills / wildflowers */
+.study--2 {
+  left: 34%;
+  top: 0;
+  width: 46%;
+}
+
+/* Landscape — portrait study */
+.study--3 {
+  right: 0;
+  top: 38%;
+  width: 34%;
+}
+
+/* Landscape — frost macro */
+.study--4 {
+  left: 22%;
+  bottom: 0;
+  width: 32%;
 }
 
 .contact {
