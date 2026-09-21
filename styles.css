@@ -88,8 +88,8 @@ body {
 
 .brand {
   flex: 0 0 auto;
-  width: min(44rem, 74vw);
-  margin: 0 auto clamp(1.25rem, 3.5vh, 2.25rem);
+  width: min(40rem, 70vw);
+  margin: 0 auto clamp(1.5rem, 4vh, 2.5rem);
 }
 
 .brand__name {
@@ -100,33 +100,24 @@ body {
   line-height: 1.1;
 }
 
-/* Symmetrical cluster — mirrored sides, centered axis */
-.cluster {
+.portfolio {
   flex: 0 1 auto;
   align-self: center;
   display: grid;
-  gap: clamp(0.85rem, 1.8vw, 1.2rem);
-  width: min(44rem, 74vw);
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 2vw, 1.35rem);
+  width: min(40rem, 70vw);
   margin: 0 auto;
-}
-
-.cluster__row--top {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: clamp(0.85rem, 1.8vw, 1.2rem);
-  align-items: center;
-}
-
-.cluster__row--bottom {
-  display: flex;
-  justify-content: center;
+  align-items: start;
 }
 
 .study {
   position: relative;
+  display: block;
   margin: 0;
   padding: 0;
   border: 0;
+  width: 100%;
   background: transparent;
   cursor: zoom-in;
   appearance: none;
@@ -148,27 +139,6 @@ body {
 
 .study:hover img {
   filter: saturate(1) contrast(1);
-}
-
-.study--side {
-  width: 100%;
-  max-width: 15.5rem;
-}
-
-.cluster__row--top .study--side:first-child {
-  justify-self: end;
-}
-
-.cluster__row--top .study--side:last-child {
-  justify-self: start;
-}
-
-.study--center {
-  width: clamp(8.5rem, 18vw, 11.5rem);
-}
-
-.study--base {
-  width: min(58%, 18rem);
 }
 
 .contact {
@@ -309,25 +279,8 @@ body.is-lightbox {
   }
 
   .brand,
-  .cluster {
-    width: min(100%, 88vw);
-  }
-
-  .cluster__row--top {
-    grid-template-columns: 1fr 0.85fr 1fr;
-  }
-
-  .study--center {
-    width: 100%;
-    max-width: 7.5rem;
-  }
-
-  .study--side {
-    max-width: none;
-  }
-
-  .study--base {
-    width: min(72%, 16rem);
+  .portfolio {
+    width: min(100%, 86vw);
   }
 
   .atmosphere__plane {
