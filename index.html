@@ -6,7 +6,7 @@
     <title>Of Clay</title>
     <meta
       name="description"
-      content="Of Clay — a creative studio by Louis and Mim. Coming soon."
+      content="Of Clay — photography and creative studio. Portfolio forming."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,19 +17,27 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <header class="brand">
-      <p class="brand__name">Of Clay</p>
-      <p class="brand__note">A creative studio, forming.</p>
-    </header>
+    <div class="fold">
+      <header class="brand">
+        <p class="brand__name">Of Clay</p>
+        <p class="brand__note">Photography</p>
+      </header>
 
-    <main class="stage" aria-label="Gallery">
-      <!-- Photos will live here -->
-      <div class="frame frame--a" aria-hidden="true"></div>
-      <div class="frame frame--b" aria-hidden="true"></div>
-      <div class="frame frame--c" aria-hidden="true"></div>
-    </main>
+      <main class="portfolio" aria-label="Selected studies">
+        <figure class="study study--light">
+          <div class="study__image" role="img" aria-label="Abstract study of soft window light"></div>
+        </figure>
+        <figure class="study study--horizon">
+          <div class="study__image" role="img" aria-label="Abstract study of a quiet horizon"></div>
+        </figure>
+        <figure class="study study--grain">
+          <div class="study__image" role="img" aria-label="Abstract study of clay texture"></div>
+        </figure>
+      </main>
+    </div>
 
     <footer class="contact">
+      <p class="contact__lede">Enquiries</p>
       <a class="contact__email" href="mailto:info@ofclay.co">info@ofclay.co</a>
 
       <form
