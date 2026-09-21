@@ -112,8 +112,9 @@ body {
 }
 
 .portfolio__top {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 0.62fr 1.38fr;
+  align-items: stretch;
   gap: clamp(0.85rem, 1.8vw, 1.15rem);
 }
 
@@ -127,6 +128,7 @@ body {
   cursor: zoom-in;
   appearance: none;
   -webkit-appearance: none;
+  overflow: hidden;
 }
 
 .study:focus-visible {
@@ -146,14 +148,24 @@ body {
   filter: saturate(1) contrast(1);
 }
 
-.study--portrait {
-  flex: 0 0 28%;
-  width: 28%;
+/* B/W landscape sets the row height; portrait crops to match */
+.study--wide img {
+  width: 100%;
+  height: auto;
+  object-position: center 28%;
 }
 
-.study--wide {
-  flex: 1 1 auto;
-  min-width: 0;
+.study--portrait {
+  min-height: 100%;
+}
+
+.study--portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 55% 40%;
 }
 
 .study--base {
