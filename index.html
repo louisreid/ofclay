@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Of Clay</title>
+    <meta
+      name="description"
+      content="Of Clay — a creative studio by Louis and Mim. Coming soon."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="brand">
+      <p class="brand__name">Of Clay</p>
+      <p class="brand__note">A creative studio, forming.</p>
+    </header>
+
+    <main class="stage" aria-label="Gallery">
+      <!-- Photos will live here -->
+      <div class="frame frame--a" aria-hidden="true"></div>
+      <div class="frame frame--b" aria-hidden="true"></div>
+      <div class="frame frame--c" aria-hidden="true"></div>
+    </main>
+
+    <footer class="contact">
+      <a class="contact__email" href="mailto:info@ofclay.co">info@ofclay.co</a>
+
+      <form
+        class="enquiry"
+        action="https://formsubmit.co/info@ofclay.co"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="Of Clay enquiry" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" />
+
+        <label class="field">
+          <span>Name</span>
+          <input type="text" name="name" required autocomplete="name" />
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+        <label class="field field--message">
+          <span>Message</span>
+          <textarea name="message" rows="3" required></textarea>
+        </label>
+        <button type="submit">Send</button>
+      </form>
+    </footer>
+  </body>
+</html>

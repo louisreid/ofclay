@@ -1,0 +1,9 @@
+{
+  "name": "ofclay",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "npx --yes serve . -l 3000",
+    "start": "npx --yes serve . -l 3000"
+  }
+}

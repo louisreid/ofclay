@@ -1,0 +1,189 @@
+:root {
+  --bg: #e4d4a6;
+  --bg-soft: #dcc99a;
+  --ink: #3d2a1c;
+  --ink-mute: #5c4332;
+  --line: rgba(61, 42, 28, 0.18);
+  --frame: rgba(61, 42, 28, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 45%, var(--bg-soft) 0%, transparent 70%),
+    var(--bg);
+  color: var(--ink);
+  font-family: "Cormorant Garamond", "Times New Roman", Times, serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.brand {
+  padding: 1.75rem 1.75rem 0;
+}
+
+.brand__name {
+  margin: 0;
+  font-size: clamp(1.65rem, 3.2vw, 2.15rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.brand__note {
+  margin: 0.45rem 0 0;
+  max-width: 14rem;
+  color: var(--ink-mute);
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-rows: 1.15fr 0.85fr;
+  gap: clamp(0.85rem, 2vw, 1.4rem);
+  align-content: center;
+  width: min(52rem, 88vw);
+  height: min(58vh, 28rem);
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.frame {
+  background: var(--frame);
+  border: 1px solid var(--line);
+}
+
+.frame--a {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.frame--b {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.frame--c {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.contact {
+  display: grid;
+  gap: 1.35rem;
+  width: min(22rem, 88vw);
+  margin: 0 auto 2rem;
+  padding: 0 1.75rem;
+}
+
+.contact__email {
+  color: var(--ink);
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  width: fit-content;
+}
+
+.contact__email:hover {
+  border-bottom-color: var(--ink);
+}
+
+.enquiry {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.field span {
+  font-size: 0.95rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.04em;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  margin: 0;
+  padding: 0.45rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.1rem;
+  outline: none;
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-bottom-color: var(--ink);
+}
+
+.honey {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+button {
+  justify-self: start;
+  margin-top: 0.35rem;
+  padding: 0.35rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 640px) {
+  .brand {
+    padding: 1.35rem 1.25rem 0;
+  }
+
+  .stage {
+    width: min(100%, 88vw);
+    height: min(42vh, 18rem);
+    gap: 0.65rem;
+  }
+
+  .contact {
+    margin-bottom: 1.5rem;
+    padding: 0 1.25rem;
+  }
+}
