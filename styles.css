@@ -264,6 +264,26 @@ body {
   opacity: 0.7;
 }
 
+.enquiry > button:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+
+.enquiry__status {
+  margin: 0.35rem 0 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+
+.enquiry__status--ok {
+  color: var(--ink-mute);
+  font-style: italic;
+}
+
+.enquiry__status--err {
+  color: #7a3b2e;
+}
+
 /* Lightbox — image only */
 .lightbox {
   position: fixed;

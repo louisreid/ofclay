@@ -2,8 +2,12 @@
   "name": "ofclay",
   "private": true,
   "version": "0.1.0",
+  "type": "module",
   "scripts": {
     "dev": "npx --yes serve . -l 3000",
     "start": "npx --yes serve . -l 3000"
+  },
+  "dependencies": {
+    "resend": "^6.0.0"
   }
 }

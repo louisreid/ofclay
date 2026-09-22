@@ -85,13 +85,7 @@
       <p class="contact__lede">Enquiries</p>
       <a class="contact__email" href="mailto:info@ofclay.co">info@ofclay.co</a>
 
-      <form
-        class="enquiry"
-        action="https://formsubmit.co/info@ofclay.co"
-        method="POST"
-      >
-        <input type="hidden" name="_subject" value="Of Clay enquiry" />
-        <input type="hidden" name="_captcha" value="false" />
+      <form class="enquiry" novalidate>
         <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" />
 
         <label class="field">
@@ -116,5 +110,6 @@
     </div>
 
     <script src="/lightbox.js" defer></script>
+    <script src="/enquiry.js" defer></script>
   </body>
 </html>
