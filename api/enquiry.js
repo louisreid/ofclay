@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 const TO = "info@ofclay.co";
-const FROM = "of clay <enquiries@send.ofclay.co>";
+const FROM = "of clay <enquiries@ofclay.co>";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -53,7 +53,7 @@ export default async function handler(req, res) {
   );
 
   if (error) {
-    console.error("[ofclay] resend failed", error.message);
+    console.error("[ofclay] resend failed", error.message, error);
     return res
       .status(502)
       .json({ ok: false, error: "Could not send just now. Please try again." });
